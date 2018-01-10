@@ -2,6 +2,7 @@ file(GLOB HEADERS "include/graphene/witness/*.hpp")
 
 add_library( graphene_witness 
              witness.cpp
+             witness_api.cpp
            )
 
 target_link_libraries( graphene_witness graphene_chain graphene_app )

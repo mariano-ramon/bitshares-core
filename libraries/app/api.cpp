@@ -110,6 +110,13 @@ namespace graphene { namespace app {
           if( _app.get_plugin( "debug_witness" ) )
              _debug_api = std::make_shared< graphene::debug_witness::debug_api >( std::ref(_app) );
        }
+       else if( api_name == "witness_api" )
+       {
+          // can only enable this API if the plugin was loaded
+          if( _app.get_plugin( "witness_api" ) )
+             _witness_api = std::make_shared< graphene::witness::witness_api >( std::ref(_app) );
+       }
+
        return;
     }
 
@@ -267,6 +274,13 @@ namespace graphene { namespace app {
        FC_ASSERT(_debug_api);
        return *_debug_api;
     }
+
+    fc::api<graphene::witness::witness_api> login_api::witness() const
+    {
+       FC_ASSERT(_witness_api);
+       return *_witness_api;
+    }
+
 
     vector<order_history_object> history_api::get_fill_order_history( asset_id_type a, asset_id_type b, uint32_t limit  )const
     {
