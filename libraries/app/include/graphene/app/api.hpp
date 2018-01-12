@@ -32,7 +32,7 @@
 
 #include <graphene/debug_witness/debug_api.hpp>
 
-#include <../plugins/witness/include/graphene/witness/witness_api.hpp>
+#include <graphene/witness/witness_api.hpp>
 
 
 

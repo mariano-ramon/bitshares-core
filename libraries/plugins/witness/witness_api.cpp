@@ -57,5 +57,16 @@ witness_api::witness_api( graphene::app::application& app )
    my = std::make_shared< detail::witness_api_impl >(app);
 }
 
+void witness_api::set_private_keys( const std::vector<std::string>& keys )
+{
+   my->set_private_keys(keys);
+}
+
+void witness_api::clear_private_keys()
+{
+   my->clear_private_keys();
+}
+
+
 
 } } // graphene::witness
