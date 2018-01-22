@@ -72,6 +72,9 @@ public:
    virtual void plugin_startup() override;
    virtual void plugin_shutdown() override;
 
+   void set_private_keys( const std::vector<std::string>& keys );
+   std::vector<std::string> get_public_keys();
+
 private:
    void schedule_production_loop();
    block_production_condition::block_production_condition_enum block_production_loop();

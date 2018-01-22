@@ -50,9 +50,9 @@ class witness_api
       void set_private_keys( const std::vector<std::string>& keys );
 
       /**
-       * Clear private Keys
+       * Get public Keys
        */
-      void clear_private_keys();
+      std::vector<std::string> get_public_keys();
 
 
       std::shared_ptr< detail::witness_api_impl > my;
@@ -62,5 +62,5 @@ class witness_api
 
 FC_API(graphene::witness::witness_api,
        (set_private_keys)
-       (clear_private_keys)
+       (get_public_keys)
      )

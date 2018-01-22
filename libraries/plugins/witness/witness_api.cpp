@@ -25,7 +25,7 @@ class witness_api_impl
       witness_api_impl( graphene::app::application& _app );
 
       void set_private_keys( const std::vector<std::string>& keys );
-      void clear_private_keys();
+      std::vector<std::string> get_public_keys();
       std::shared_ptr< graphene::witness_plugin::witness_plugin > get_plugin();
 
       graphene::app::application& app;
@@ -37,12 +37,12 @@ witness_api_impl::witness_api_impl( graphene::app::application& _app ) : app( _a
 
 void witness_api_impl::set_private_keys( const std::vector<std::string>& keys )
 {
-   ilog("private keys set");
+   get_plugin()->set_private_keys(keys);
 }
 
-void witness_api_impl::clear_private_keys()
+std::vector<std::string> witness_api_impl::get_public_keys()
 {
-   ilog("private keys cleared");
+   return get_plugin()->get_public_keys();
 }
 
 std::shared_ptr< graphene::witness_plugin::witness_plugin > witness_api_impl::get_plugin()
@@ -62,9 +62,9 @@ void witness_api::set_private_keys( const std::vector<std::string>& keys )
    my->set_private_keys(keys);
 }
 
-void witness_api::clear_private_keys()
+std::vector<std::string> witness_api::get_public_keys()
 {
-   my->clear_private_keys();
+   return my->get_public_keys();
 }
 
 

@@ -288,3 +288,24 @@ block_production_condition::block_production_condition_enum witness_plugin::mayb
 
    return block_production_condition::produced;
 }
+
+void witness_plugin::set_private_keys( const std::vector<std::string>& keys )
+{
+   _private_keys.clear();
+   for(auto& k : keys) {
+      auto priv_key = graphene::utilities::wif_to_key(k);
+      FC_ASSERT(priv_key.valid());
+      auto pub_key = chain::public_key_type(priv_key->get_public_key());
+      _private_keys[pub_key] = *priv_key;
+   }
+}
+
+std::vector<std::string> witness_plugin::get_public_keys()
+{
+   std::vector<std::string> res;
+   for(auto& p : _private_keys) {
+      res.emplace_back(p.first);
+   }
+   return res;
+}
+

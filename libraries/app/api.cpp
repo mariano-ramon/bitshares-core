@@ -113,7 +113,7 @@ namespace graphene { namespace app {
        else if( api_name == "witness_api" )
        {
           // can only enable this API if the plugin was loaded
-          if( _app.get_plugin( "witness_api" ) )
+          if( _app.get_plugin( "witness" ) )
              _witness_api = std::make_shared< graphene::witness::witness_api >( std::ref(_app) );
        }
 
